@@ -1,0 +1,132 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-ink: var(--ink);
+  --color-softpurple: var(--softpurple);
+  --color-wine: var(--wine);
+  --color-blush: var(--blush);
+  --color-cream: var(--cream);
+  --color-gold: var(--gold);
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Jost", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.625rem;
+
+  --ink: oklch(0.15 0.05 300);
+  --softpurple: oklch(0.75 0.09 290);
+  --wine: oklch(0.5 0.13 15);
+  --blush: oklch(0.92 0.02 340);
+  --cream: oklch(0.97 0.01 80);
+  --gold: oklch(0.72 0.11 85);
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: var(--cream);
+  --card-foreground: var(--ink);
+  --popover: var(--cream);
+  --popover-foreground: var(--ink);
+  --primary: var(--wine);
+  --primary-foreground: var(--cream);
+  --secondary: var(--softpurple);
+  --secondary-foreground: var(--cream);
+  --muted: var(--blush);
+  --muted-foreground: oklch(0.15 0.05 300 / 0.6);
+  --accent: var(--gold);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: var(--cream);
+  --border: oklch(0.15 0.05 300 / 0.1);
+  --input: oklch(0.15 0.05 300 / 0.1);
+  --ring: var(--softpurple);
+  --chart-1: var(--wine);
+  --chart-2: var(--softpurple);
+  --chart-3: var(--gold);
+  --chart-4: var(--blush);
+  --chart-5: var(--ink);
+  --sidebar: var(--cream);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--wine);
+  --sidebar-primary-foreground: var(--cream);
+  --sidebar-accent: var(--blush);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: oklch(0.15 0.05 300 / 0.1);
+  --sidebar-ring: var(--softpurple);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+@utility jfloat { animation: floatY 7s ease-in-out infinite alternate; }
+@utility glint { animation: twinkle 4.5s ease-in-out infinite; }
+@utility glow { animation: glow 6s ease-in-out infinite alternate; }
+@utility shimmer { animation: shimmer 8s ease-in-out infinite alternate; }
+@utility spin-slow { animation: spinSlow 60s linear infinite; }
+@utility ptl { animation: drift linear infinite; }
+
+@keyframes floatY { from { transform: translateY(-7px); } to { transform: translateY(9px); } }
+@keyframes drift {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  12% { opacity: 0.55; }
+  88% { opacity: 0.55; }
+  100% { transform: translate(28px, 140px) rotate(120deg); opacity: 0; }
+}
+@keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.15); } }
+@keyframes glow { from { opacity: 0.5; } to { opacity: 0.9; } }
+@keyframes shimmer { from { transform: rotate(16deg) translateY(-160px); } to { transform: rotate(16deg) translateY(220px); } }
+@keyframes spinSlow { to { transform: rotate(360deg); } }
+
